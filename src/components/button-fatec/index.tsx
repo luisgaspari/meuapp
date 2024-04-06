@@ -1,5 +1,5 @@
 import './ButtonFatec.css' //className='botao-fatec'
-import styles from './ButtonFatec.module.css' //className={styles.BotaoFatec}
+//import styles from './ButtonFatec.module.css' //className={styles.BotaoFatec}
 
 interface Props {
     type: 'button' | 'submit' | 'reset'
@@ -7,9 +7,9 @@ interface Props {
 }
 
 function ButtonFatec({ type, label }: Props) {
-    return(
-        // <button className='botao-fatec' type={type}>
-        <button className={styles.BotaoFatec} type={type}>
+    return (
+        // <button className={styles.BotaoFatec} type={type}></button>
+        <button className='botao-fatec' type={type}>
             {label}
         </button>
     )
