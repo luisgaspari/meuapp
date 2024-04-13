@@ -8,7 +8,7 @@ interface Props {
 
 function InputFatec({ type, text, defaultvalue }: Props) {
     return (
-        <input className={styles.InputFatec} type={type} defaultValue={defaultvalue} placeholder={text}></input>
+        <input className={styles.inputFatec} type={type} defaultValue={defaultvalue} placeholder={text}></input>
     )
 }
 

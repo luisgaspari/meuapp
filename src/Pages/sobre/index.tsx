@@ -4,8 +4,14 @@ function Sobre() {
     return (
         <div>
             <h1>Sobre</h1>
-            <Link to="/">Voltar para Home</Link>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aperiam soluta nisi quod porro, dolores qui, cumque ipsa quo eos nulla error, natus laudantium magni repellat explicabo ex deserunt aliquid.</p>
+            <Link to="/">Home</Link> &nbsp;
+            <Link to="/tasks">Tarefas</Link> &nbsp;
+            <Link to="/contato">Contato</Link>
+            <hr />
+            <p>Projeto desenvolvido por:</p>
+            <h2>Luis Antonio Gaspari</h2>
+            <h3>Fatec - Análise e Desenvolvimento de Sistemas</h3>
+            <h3>4º Semestre - 2024</h3>
         </div>
     )
 }
