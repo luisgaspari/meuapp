@@ -1,14 +1,14 @@
-import './InputFatec.css'
+import styles from './InputFatec.module.css'
 
 interface Props {
-    type: string
+    type: 'text' | 'email' | 'tel'
     text: string
     defaultvalue: string
 }
 
 function InputFatec({ type, text, defaultvalue }: Props) {
     return (
-        <input className='input-fatec' type={type} defaultValue={defaultvalue} placeholder={text}></input>
+        <input className={styles.InputFatec} type={type} defaultValue={defaultvalue} placeholder={text}></input>
     )
 }
 
