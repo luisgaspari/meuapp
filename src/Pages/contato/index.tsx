@@ -5,9 +5,12 @@ function Contato() {
     return (
         <div>
             <h1>Contato</h1>
-            <Link to="/">Home</Link> &nbsp;
-            <Link to="/tasks">Tarefas</Link> &nbsp;
-            <Link to="/sobre">Sobre</Link>
+            <ul id="menu">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/tasks">Tarefas</Link></li>
+                <li><Link to="/contato">Contato</Link></li>
+                <li><Link to="/sobre">Sobre</Link></li>
+            </ul>
             <hr />
             <FormFatec />
         </div>

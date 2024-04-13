@@ -4,9 +4,12 @@ function Home() {
     return (
         <div>
             <h1>Home</h1>
-            <Link to="/tasks">Tarefas</Link> &nbsp;
-            <Link to="/contato">Contato</Link> &nbsp;
-            <Link to="/sobre">Sobre</Link>
+            <ul id="menu">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/tasks">Tarefas</Link></li>
+                <li><Link to="/contato">Contato</Link></li>
+                <li><Link to="/sobre">Sobre</Link></li>
+            </ul>
             <hr />
             <p>Este projeto é a conclusão da N1 da disciplina de Programação Web.</p>
         </div>
