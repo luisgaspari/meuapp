@@ -2,20 +2,26 @@ import { Card, CardBody, HStack, Text } from "@chakra-ui/react";
 import ButtonFatec from "../button-fatec";
 
 interface Props {
-    text: string;
+    tasks: string[];
 }
 
-function ListTasks({ text }: Props) {
+function ListTasks({ tasks }: Props) {
     return (
-        <Card>
-            <HStack>
-                <CardBody textAlign={'left'}>
-                    <Text>{text}</Text>
-                </CardBody>
-                <ButtonFatec type='button' label='Pendente' />
-                <ButtonFatec type='button' label='Excluir' />
-            </HStack>
-        </Card>
+        <>
+            {
+                tasks.map((task) => (
+                    <Card variant={'filled'}>
+                        <HStack>
+                            <CardBody textAlign={'left'}>
+                                <Text>{task}</Text>
+                            </CardBody>
+                            <ButtonFatec type='button' label='Pendente' />
+                            <ButtonFatec type='button' label='Excluir' />
+                        </HStack>
+                    </Card>
+                ))
+            }
+        </>
     );
 }
 

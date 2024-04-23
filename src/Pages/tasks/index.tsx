@@ -4,6 +4,9 @@ import InputFatec from "../../components/input-fatec";
 import ListTasks from "../../components/listTask";
 
 function Tasks() {
+
+    const tasks = ['Tarefa 1', 'Tarefa 2', 'Tarefa 3', 'Tarefa 4', 'Tarefa 5'];
+
     return (
         <Layout>
             <Box p={4}>
@@ -35,7 +38,7 @@ function Tasks() {
                                 </FormControl>
                             </Stack>
                             <Stack py={4}>
-                                <ListTasks text='Tarefa' />
+                                <ListTasks tasks={tasks} />
                             </Stack>
                         </Box>
                     </Center>
