@@ -1,4 +1,4 @@
-import styles from './InputFatec.module.css'
+import { Input } from '@chakra-ui/react'
 
 interface Props {
     type: 'text' | 'email' | 'tel'
@@ -8,7 +8,13 @@ interface Props {
 
 function InputFatec({ type, text, defaultvalue }: Props) {
     return (
-        <input className={styles.inputFatec} type={type} defaultValue={defaultvalue} placeholder={text}></input>
+        <Input
+            placeholder={text}
+            _placeholder={{ color: 'gray.500' }}
+            type={type}
+            defaultValue={defaultvalue}
+            color='red'
+        />
     )
 }
 

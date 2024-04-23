@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import Layout from "../../components/layouts";
 
 function Home() {
     return (
-        <div>
-            <h1>Home</h1>
-            <ul id="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/tasks">Tarefas</Link></li>
-                <li><Link to="/contato">Contato</Link></li>
-                <li><Link to="/sobre">Sobre</Link></li>
-            </ul>
-            <hr />
-            <p>Este projeto é a conclusão da N1 da disciplina de Programação Web.</p>
-        </div>
-    )
+        <Layout>
+            <Box p={4}>
+                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+                    <Heading fontSize={'3xl'}>Home Page</Heading>
+                    <Text color={'gray.600'} fontSize={'xl'}>
+                        Este projeto é a conclusão da N1 da disciplina de Programação Web.
+                    </Text>
+                </Stack>
+            </Box>
+        </Layout >
+    );
 }
 
-export default Home
+export default Home;

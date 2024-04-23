@@ -1,19 +1,31 @@
-import { Link } from "react-router-dom";
+import { Box, Center, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import FormFatec from "../../components/form-fatec";
+import Layout from "../../components/layouts";
 
 function Contato() {
     return (
-        <div>
-            <h1>Contato</h1>
-            <ul id="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/tasks">Tarefas</Link></li>
-                <li><Link to="/contato">Contato</Link></li>
-                <li><Link to="/sobre">Sobre</Link></li>
-            </ul>
-            <hr />
-            <FormFatec />
-        </div>
+        <Layout>
+            <Box p={4}>
+                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+                    <Heading fontSize={'3xl'}>Contatos</Heading>
+                    <Text color={'gray.600'} fontSize={'xl'}>
+                        Preencha o formulário abaixo e entraremos em contato.
+                    </Text>
+                    <Center py={6}>
+                        <Box
+                            maxW={'520px'}
+                            w={'full'}
+                            bg={'white'}
+                            boxShadow={'2xl'}
+                            rounded={'lg'}
+                            p={6}
+                            textAlign={'center'}>
+                            <FormFatec />
+                        </Box>
+                    </Center>
+                </Stack>
+            </Box>
+        </Layout>
     )
 }
 

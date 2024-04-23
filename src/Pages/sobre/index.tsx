@@ -1,22 +1,44 @@
-import { Link } from "react-router-dom";
+import { Avatar, Badge, Box, Button, Center, Container, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import Layout from "../../components/layouts";
 
 function Sobre() {
     return (
-        <div>
-            <h1>Sobre</h1>
-            <ul id="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/tasks">Tarefas</Link></li>
-                <li><Link to="/contato">Contato</Link></li>
-                <li><Link to="/sobre">Sobre</Link></li>
-            </ul>
-            <hr />
-            <p>Projeto desenvolvido por:</p>
-            <h2>Luis Antonio Gaspari</h2>
-            <h3>Fatec - Análise e Desenvolvimento de Sistemas</h3>
-            <h3>4º Semestre - 2024</h3>
-        </div>
-    )
+        <Layout>
+            <Box p={4}>
+                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+                    <Heading fontSize={'3xl'}>Sobre</Heading>
+                    <Text color={'gray.600'} fontSize={'xl'}>
+                        Informações sobre o projeto e o desenvolvedor.
+                    </Text>
+                    <Center py={6}>
+                        <Box
+                            maxW={'520px'}
+                            w={'full'}
+                            bg={useColorModeValue('white', 'gray.900')}
+                            boxShadow={'2xl'}
+                            rounded={'lg'}
+                            p={6}
+                            textAlign={'center'}>
+                            <Heading fontSize={'2xl'} fontFamily={'body'}>
+                                Luis Antonio Gaspari
+                            </Heading>
+                            <Text fontWeight={600} color={'gray.500'} mb={4}>
+                                luis.gaspari@fatec.sp.gov.br
+                            </Text>
+                            <Text
+                                textAlign={'center'}
+                                color={useColorModeValue('gray.700', 'gray.400')}
+                                px={3}>
+                                <Text as='b'>Fatec Indaiatuba</Text> <br />
+                                Análise e Desenvolvimento de Sistemas <br />
+                                4º Semestre - 2024
+                            </Text>
+                        </Box>
+                    </Center>
+                </Stack>
+            </Box>
+        </Layout>
+    );
 }
 
 export default Sobre;
