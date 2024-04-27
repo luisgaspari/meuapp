@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, Center, Checkbox, Container, FormControl, FormLabel, HStack, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, Center, Checkbox, Container, FormControl, FormLabel, HStack, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Layout from "../../components/layouts";
 import InputFatec from "../../components/input-fatec";
 import ListTasks from "../../components/listTask";

@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Button, Center, Container, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Container, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Layout from "../../components/layouts";
 
 function Sobre() {
