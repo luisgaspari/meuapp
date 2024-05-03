@@ -1,11 +1,34 @@
 import { Box, Button, Center, Checkbox, Container, FormControl, FormLabel, HStack, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Layout from "../../components/layouts";
 import InputFatec from "../../components/input-fatec";
-import ListTasks from "../../components/listTask";
+import { useEffect, useState } from "react";
+import { Task } from "../../interfaces/tasks";
+import FormTask from "../../components/tasks/formTask";
+import ItemTask from "../../components/tasks/itemTask";
 
 function Tasks() {
 
-    const tasks = ['Tarefa 1', 'Tarefa 2', 'Tarefa 3', 'Tarefa 4', 'Tarefa 5'];
+    const [tasks, setTasks] = useState<Task[]>([
+        // { id: 1, nome: 'Tarefa Manual 1', concluida: false },
+        // { id: 2, nome: 'Tarefa Manual 2', concluida: false },
+    ]);
+
+    function loadList() {
+        return [
+            { id: 1, nome: 'Tarefa 1 Inicio', concluida: false },
+            { id: 2, nome: 'Tarefa 2 Inicio', concluida: false },
+        ]
+    }
+
+    useEffect(() => {
+        const tasks = loadList();
+        setTasks(tasks);
+    }, []);
+
+    function deleteTask(id: number) {
+        const tasksUpdated = tasks.filter((task) => task.id !== id);
+        setTasks(tasksUpdated)
+    }
 
     return (
         <Layout>
@@ -13,7 +36,7 @@ function Tasks() {
                 <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
                     <Heading fontSize={'3xl'}>Tarefas</Heading>
                     <Text color={'gray.600'} fontSize={'xl'}>
-                        Lista de Tarefas.
+                        Lista de Tarefas
                     </Text>
                     <Center py={6}>
                         <Box
@@ -24,21 +47,18 @@ function Tasks() {
                             rounded={'lg'}
                             p={6}
                             textAlign={'center'}>
-
-                            <Stack spacing={4}>
-                                <FormControl id="task">
-                                    <FormLabel>Inserir nova tarefa</FormLabel>
-                                    <HStack>
-                                        <InputFatec text='Digite o título da Tarefa' defaultvalue='' type='text' />
-                                        <Checkbox>Realizada?</Checkbox>
-                                        <Button bg={'blue.400'} color={'white'} _hover={{ bg: 'blue.500', }}>
-                                            Inserir
-                                        </Button>
-                                    </HStack>
-                                </FormControl>
-                            </Stack>
                             <Stack py={4}>
-                                <ListTasks tasks={tasks} />
+                                <FormTask tasks={tasks} setTasks={setTasks} />
+                                {
+                                    tasks.map((task) => (
+                                        <ItemTask
+                                            key={task.id}
+                                            deleteTask={deleteTask}
+                                            titulo={task.nome}
+                                            idTarefa={task.id}
+                                        />
+                                    ))
+                                }
                             </Stack>
                         </Box>
                     </Center>
