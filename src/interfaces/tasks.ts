@@ -1,5 +1,10 @@
 export interface Task {
     id: number;
-    nome: string;
-    concluida: boolean;
+    title: string;
+    completed: boolean;
+}
+
+export interface PostTask {
+    title: string
+    completed?: boolean
 }

@@ -1,33 +1,49 @@
-import { Box, Button, Center, Checkbox, Container, FormControl, FormLabel, HStack, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Container, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Layout from "../../components/layouts";
-import InputFatec from "../../components/input-fatec";
 import { useEffect, useState } from "react";
 import { Task } from "../../interfaces/tasks";
 import FormTask from "../../components/tasks/formTask";
 import ItemTask from "../../components/tasks/itemTask";
+import api from "../../helpers/axios";
 
 function Tasks() {
 
-    const [tasks, setTasks] = useState<Task[]>([
-        // { id: 1, nome: 'Tarefa Manual 1', concluida: false },
-        // { id: 2, nome: 'Tarefa Manual 2', concluida: false },
-    ]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
-    function loadList() {
-        return [
-            { id: 1, nome: 'Tarefa 1 Inicio', concluida: false },
-            { id: 2, nome: 'Tarefa 2 Inicio', concluida: false },
-        ]
+    async function loadList() {
+        const response = await api.get('/task')
+        if (response.status === 200) {
+            setTasks(response.data)
+        }
     }
 
     useEffect(() => {
-        const tasks = loadList();
-        setTasks(tasks);
-    }, []);
+        loadList()
+    }, [])
 
     function deleteTask(id: number) {
-        const tasksUpdated = tasks.filter((task) => task.id !== id);
-        setTasks(tasksUpdated)
+        api.delete(`/task/${id}`)
+            .then(response => {
+                if (response.status === 204) {
+                    loadList
+                } else {
+                    alert('Erro ao deletar')
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    function modifyStatus(task: Task) {
+        task.completed = !task.completed
+        api.put(`/task/${task.id}`, task)
+            .then(() => {
+                loadList()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     return (
@@ -48,14 +64,14 @@ function Tasks() {
                             p={6}
                             textAlign={'center'}>
                             <Stack py={4}>
-                                <FormTask tasks={tasks} setTasks={setTasks} />
+                                <FormTask loadList={loadList} />
                                 {
                                     tasks.map((task) => (
                                         <ItemTask
                                             key={task.id}
                                             deleteTask={deleteTask}
-                                            titulo={task.nome}
-                                            idTarefa={task.id}
+                                            modifyStatus={modifyStatus}
+                                            task={task}
                                         />
                                     ))
                                 }

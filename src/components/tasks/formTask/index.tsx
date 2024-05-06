@@ -1,21 +1,28 @@
-import { Button, Checkbox, Flex, FormControl, FormLabel, HStack, Input, Stack } from "@chakra-ui/react"
+import { Button, Checkbox, FormControl, FormLabel, HStack, Input, Stack } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react"
-import { Task } from "../../../interfaces/tasks"
+import api from "../../../helpers/axios"
+import { PostTask } from "../../../interfaces/tasks"
 
 interface FormTaskProps {
-    tasks: Task[]
-    setTasks(tasks: Task[]): void
+    loadList(): void
 }
 
-function FormTask({ tasks, setTasks }: FormTaskProps) {
+function FormTask({ loadList }: FormTaskProps) {
 
     const [taskName, setTaskName] = useState('')
+    const [taskCompleted, setTaskCompleted] = useState(false)
 
     function addTask() {
-        if (tasks.length > 0) {
-            const lastId = tasks[tasks.length - 1].id
-            const newTask = { id: lastId + 1, nome: taskName, concluida: false }
-            setTasks([...tasks, newTask])
+        if (taskName != '') {
+            const newTask: PostTask = {
+                title: taskName,
+                completed: taskCompleted
+            }
+            api.post('/task', newTask)
+                .then(() => {
+                    setTaskName('')
+                    loadList()
+                })
         }
     }
 
@@ -36,7 +43,7 @@ function FormTask({ tasks, setTasks }: FormTaskProps) {
                         placeholder='Título da Tarefa'
                         size='md'
                     />
-                    <Checkbox>Realizado?</Checkbox>
+                    <Checkbox onChange={(event) => setTaskCompleted(event.target.checked)}>Realizado?</Checkbox>
                     <Button onClick={addTask} colorScheme="blue">Adicionar</Button>
                 </HStack>
             </FormControl>

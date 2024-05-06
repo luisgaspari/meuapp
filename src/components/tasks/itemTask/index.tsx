@@ -1,25 +1,27 @@
-import { Box, Button, Card, CardBody, Grid, HStack, Text } from "@chakra-ui/react";
+import { Button, Card, CardBody, HStack, Text } from "@chakra-ui/react";
+import { Task } from "../../../interfaces/tasks";
 
 interface ItemTaskProps {
-    titulo: string
-    idTarefa: number
+    task: Task
     deleteTask(id: number): void
+    modifyStatus(task: Task): void
 }
 
-function ItemTask({ titulo, idTarefa, deleteTask }: ItemTaskProps) {
+function ItemTask({ task, deleteTask, modifyStatus }: ItemTaskProps) {
     return (
         <>
-            {
-                <Card variant={'filled'}>
-                    <HStack>
-                        <CardBody textAlign={'left'}>
-                            <Text>{idTarefa} - {titulo}</Text>
-                        </CardBody>
-                        <Button colorScheme="green">Concluir</Button>
-                        <Button onClick={() => deleteTask(idTarefa)} colorScheme="red">Remover</Button>
-                    </HStack>
-                </Card>
-            }
+            <Card variant={'filled'}>
+                <HStack>
+                    <CardBody textAlign={'left'}>
+                        <Text>{task.id} - {task.title}</Text>
+                    </CardBody>
+                    <Button onClick={() => modifyStatus(task)}
+                        colorScheme={task.completed ? "green" : "orange"}>
+                        {task.completed ? "Finalizada" : "Pendente"}
+                    </Button>
+                    <Button onClick={() => deleteTask(task.id)} colorScheme="red">Remover</Button>
+                </HStack>
+            </Card>
         </>
     )
 }
