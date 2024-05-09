@@ -7,7 +7,7 @@ function Contato() {
         <Layout>
             <Box p={4}>
                 <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-                    <Heading fontSize={'3xl'}>Contatos</Heading>
+                    <Heading fontSize={'3xl'}>Meus Contatos</Heading>
                     <Text color={'gray.600'} fontSize={'xl'}>
                         Preencha o formulário abaixo e entraremos em contato.
                     </Text>
