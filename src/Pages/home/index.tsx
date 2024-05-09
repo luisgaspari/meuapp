@@ -6,7 +6,7 @@ function Home() {
         <Layout>
             <Box p={4}>
                 <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-                    <Heading fontSize={'3xl'}>Home Page</Heading>
+                    <Heading fontSize={'3xl'}>My Home Page</Heading>
                     <Text color={'gray.600'} fontSize={'xl'}>
                         Este projeto é a conclusão da N1 da disciplina de Programação Web.
                     </Text>
