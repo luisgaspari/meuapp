@@ -11,7 +11,7 @@ function Tasks() {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     async function loadList() {
-        const response = await api.get('/task')
+        const response = await api.get('/task', { withCredentials: true })
         if (response.status === 200) {
             setTasks(response.data)
         }
@@ -22,7 +22,7 @@ function Tasks() {
     }, [])
 
     function deleteTask(id: number) {
-        api.delete(`/task/${id}`)
+        api.delete(`/task/${id}`, { withCredentials: true })
             .then(response => {
                 if (response.status === 204) {
                     loadList
@@ -37,7 +37,7 @@ function Tasks() {
 
     function modifyStatus(task: Task) {
         task.completed = !task.completed
-        api.put(`/task/${task.id}`, task)
+        api.put(`/task/${task.id}`, task, { withCredentials: true })
             .then(() => {
                 loadList()
             })

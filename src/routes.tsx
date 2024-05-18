@@ -5,6 +5,8 @@ import NotFound from './Pages/404'
 import Tasks from './Pages/tasks'
 import Contato from './Pages/contato'
 import Tarefas from './Pages/tarefas/tarefas'
+import Cadastro from './Pages/cadastro'
+import Login from './Pages/login'
 
 const router = createBrowserRouter([
     { path: '/', element: <Home />, errorElement: <NotFound /> },
@@ -12,7 +14,8 @@ const router = createBrowserRouter([
     { path: '/contato', element: <Contato /> },
     { path: '/sobre', element: <Sobre /> },
     { path: '/tarefas', element: <Tarefas /> },
-
+    { path: '/cadastrar', element: <Cadastro /> },
+    { path: '/login', element: <Login /> }
 ])
 
 export default router
