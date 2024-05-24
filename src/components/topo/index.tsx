@@ -297,4 +297,12 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "Sobre",
     href: "/sobre",
   },
+  {
+    label: "Cadastrar",
+    href: "/cadastrar",
+  },
+  {
+    label: "Login",
+    href: "/login",
+  },
 ];
