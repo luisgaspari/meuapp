@@ -1,6 +1,7 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Input, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 import api from "../../helpers/axios";
+import Layout from "../../components/layouts";
 
 function Login() {
 
@@ -25,14 +26,20 @@ function Login() {
     }
 
     return (
-        <>
-            <h1>Login</h1>
-            <form>
-                <Input type="email" placeholder="Email" onChange={(e) => setUserData({ ...userData, email: e.target.value })} />
-                <Input type="password" placeholder="Senha" onChange={(e) => setUserData({ ...userData, password: e.target.value })} />
-                <Button onClick={handleLogin}>Entrar</Button>
-            </form>
-        </>
+        <Layout>
+            <Box p={4}>
+                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+                    <Heading fontSize={'3xl'}>Login</Heading>
+                    <Box as={'form'}>
+                        <Stack spacing={4} w={'full'}>
+                            <Input type="email" placeholder="Email" onChange={(e) => setUserData({ ...userData, email: e.target.value })} />
+                            <Input type="password" placeholder="Senha" onChange={(e) => setUserData({ ...userData, password: e.target.value })} />
+                            <Button onClick={handleLogin}>Entrar</Button>
+                        </Stack>
+                    </Box>
+                </Stack>
+            </Box>
+        </Layout >
     )
 }
 
